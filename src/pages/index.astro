@@ -1,0 +1,550 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Shotliss - Film pre-production, simplified</title>
+    <meta name="description" content="Storyboards, shot lists, shooting made simple. Shotliss is pre-production software that stays out of your way." />
+    <script is:inline>
+      // Apply theme before paint to avoid flash
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored ?? (prefersDark ? 'dark' : 'light');
+    </script>
+  </head>
+  <body>
+
+
+    <!-- 1. HERO -->
+    <section id="hero">
+      <div class="container">
+        <div class="wordmark">Shotliss</div>
+        <h1>Storyboards, shot lists,<br/>shooting made simple.</h1>
+        <p class="sub">Prepare for a smooth shoot.</p>
+        <div class="gif-placeholder">
+          <span>GIF - Main UI loop: tab bar → storyboard → shot list</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FEATURE HIGHLIGHTS -->
+    <section id="features">
+      <div class="container">
+        <div class="feature-tabs" role="tablist">
+          <button class="feature-tab active" role="tab" aria-selected="true" data-tab="0">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <!-- Storyboard: grid of frames -->
+              <rect x="1" y="1" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="10" y="1" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="1" y="9" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="10" y="9" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Storyboards
+          </button>
+          <button class="feature-tab" role="tab" aria-selected="false" data-tab="1">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <!-- Shot list: lines with a bullet -->
+              <circle cx="3" cy="5" r="1.25" fill="currentColor"/>
+              <line x1="6.5" y1="5" x2="17" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="3" cy="9" r="1.25" fill="currentColor"/>
+              <line x1="6.5" y1="9" x2="17" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="3" cy="13" r="1.25" fill="currentColor"/>
+              <line x1="6.5" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Shot Lists
+          </button>
+          <button class="feature-tab" role="tab" aria-selected="false" data-tab="2">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <!-- Call sheet: document with lines -->
+              <rect x="2" y="1" width="14" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="5" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="5" y1="9" x2="13" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Call Sheets
+          </button>
+        </div>
+
+        <div class="feature-panels">
+          <div class="feature-panel active" data-panel="0">
+            <div class="gif-placeholder">
+              <span>GIF - Storyboard sketch: draw → scene card appears</span>
+            </div>
+            <h2>Storyboards with a built-in sketch tool</h2>
+            <p>Sketch scenes directly in the app or drop in reference images. No extra software, no friction.</p>
+          </div>
+
+          <div class="feature-panel" data-panel="1">
+            <div class="gif-placeholder">
+              <span>GIF - Shot type preview: dropdown changes → stick figure updates → drag to reorder</span>
+            </div>
+            <h2>Smart shot lists with visual previews</h2>
+            <p>Every angle documented. Every shot numbered automatically. The stick figure updates as you pick your shot type.</p>
+          </div>
+
+          <div class="feature-panel" data-panel="2">
+            <div class="gif-placeholder">
+              <span>GIF - Call sheet generation: one click → formatted call sheet</span>
+            </div>
+            <h2>Auto-generated call sheets</h2>
+            <p>One click. Fully populated call sheet, built from your schedule. Show up ready.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW IT WORKS -->
+    <section id="how-it-works">
+      <div class="container">
+        <h2>The whole workflow, start to finish.</h2>
+        <p>Storyboard a scene. Shot list populates. Schedule generates. Call sheet exports.</p>
+        <div class="gif-placeholder tall">
+          <span>GIF - Full workflow walkthrough (~15 sec)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THEME DEMO -->
+    <section id="themes">
+      <div class="container">
+        <h2>Fits your workflow - and your aesthetic.</h2>
+        <p>Light, dark, and color accents. Shotliss matches however you like to work.</p>
+        <div class="theme-gif-wrap">
+          <div class="gif-placeholder">
+            <span>GIF - Theme toggle: light ↔ dark + color accent cycle</span>
+          </div>
+          <div class="theme-gif-bar">
+            <span class="theme-label">Light</span>
+            <button id="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode">
+              <span class="toggle-thumb"></span>
+            </button>
+            <span class="theme-label">Dark</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <h2>Pricing</h2>
+        <div class="pricing-options">
+          <div class="price-card">
+            <div class="price-label">One-time</div>
+            <div class="price-amount">~$20</div>
+            <div class="price-note">Yours forever</div>
+          </div>
+          <div class="price-divider">or</div>
+          <div class="price-card">
+            <div class="price-label">Monthly</div>
+            <div class="price-amount">~$3–5</div>
+            <div class="price-note">Cancel anytime</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FREE FOR STUDENTS -->
+    <section id="students">
+      <div class="container">
+        <h2>Free for students.</h2>
+        <p class="sub">Film school is expensive enough. Shotliss is free for verified students.<br/>Learn pre-production by doing it.</p>
+        <div class="gif-placeholder small">
+          <span>GIF - Student verification: email → checkmark → app unlocks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. EMAIL CAPTURE -->
+    <section id="waitlist">
+      <div class="container">
+        <h2>Get in before launch.</h2>
+        <p class="sub">Early access pricing locks in forever.</p>
+        <form class="email-form" action="#" method="post">
+          <input type="email" name="email" placeholder="your@email.com" required />
+          <button type="submit">Get early access</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <span class="wordmark-sm">Shotliss</span>
+        <span class="footer-copy">&copy; 2026 Shotliss</span>
+      </div>
+    </footer>
+
+    <script>
+      // Feature tabs
+      const tabs = document.querySelectorAll<HTMLElement>('.feature-tab');
+      const panels = document.querySelectorAll<HTMLElement>('.feature-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const i = tab.dataset.tab!;
+          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+          panels.forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          document.querySelector(`.feature-panel[data-panel="${i}"]`)!.classList.add('active');
+        });
+      });
+
+      // Theme toggle
+      const toggle = document.getElementById('theme-toggle')!;
+      const syncToggle = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        toggle.setAttribute('aria-checked', String(dark));
+      };
+      syncToggle();
+      toggle.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        syncToggle();
+      });
+    </script>
+
+  </body>
+</html>
+
+<style>
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --surface: #f5f5f5;
+    --radius: 10px;
+    --max-w: 800px;
+    --font: 'Geist Variable', system-ui, sans-serif;
+    --font-mono: 'Geist Mono Variable', monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0a;
+    --fg: #fafafa;
+    --muted: #888;
+    --border: #222;
+    --surface: #111;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* ── Theme toggle ── */
+  .theme-gif-wrap {
+    margin-top: 40px;
+  }
+
+  .theme-gif-wrap .gif-placeholder {
+    margin-top: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+  }
+
+  .theme-gif-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .theme-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    font-family: var(--font);
+    user-select: none;
+  }
+
+  #theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--border);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+  }
+
+  [data-theme="dark"] #theme-toggle {
+    background: var(--fg);
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: var(--bg);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  [data-theme="dark"] .toggle-thumb {
+    transform: translateX(20px);
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 100px 0; }
+
+  /* ── Typography ── */
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 560px;
+  }
+
+  p.sub { font-size: 1.15rem; }
+
+  /* ── Wordmark ── */
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    opacity: 0.6;
+  }
+
+  /* ── Hero ── */
+  #hero { padding-top: 120px; padding-bottom: 100px; }
+  #hero p.sub { margin-top: 12px; margin-bottom: 48px; }
+
+  /* ── GIF Placeholders ── */
+  .gif-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .gif-placeholder span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .gif-placeholder.tall { aspect-ratio: 16 / 7; }
+  .gif-placeholder.small { aspect-ratio: 16 / 5; }
+
+  /* ── Features ── */
+  .feature-tabs {
+    display: flex;
+    gap: 4px;
+    margin: 0 auto 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 2px);
+    padding: 4px;
+    width: fit-content;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .feature-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .feature-tab:hover { color: var(--fg); }
+
+  .feature-tab.active {
+    background: var(--bg);
+    color: var(--fg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .feature-panel { display: none; }
+  .feature-panel.active { display: block; }
+  .feature-panel h2 { margin-top: 32px; }
+  .feature-panel p { margin-top: 10px; }
+
+  /* ── Pricing ── */
+  .pricing-options {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin: 48px 0 0;
+  }
+
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 40px;
+    min-width: 180px;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .price-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .price-amount {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+
+  .price-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .price-divider { color: var(--muted); font-size: 0.9rem; }
+
+  /* ── Students ── */
+  #students p.sub { margin-top: 12px; }
+
+  /* ── Email form ── */
+  #waitlist p.sub { margin-top: 12px; margin-bottom: 32px; }
+
+  .email-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .email-form input[type="email"] {
+    font-family: var(--font);
+    font-size: 1rem;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--fg);
+    width: 280px;
+    outline: none;
+    transition: border-color 0.15s, background 0.2s, color 0.2s;
+  }
+
+  .email-form input[type="email"]:focus { border-color: var(--fg); }
+  .email-form input[type="email"]::placeholder { color: var(--muted); }
+
+  .email-form button {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    background: var(--fg);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .email-form button:hover { opacity: 0.8; }
+
+  /* ── Footer ── */
+  footer { padding: 32px 0; }
+
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wordmark-sm {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    section { padding: 64px 0; }
+    #hero { padding-top: 80px; }
+    .pricing-options { flex-direction: column; gap: 16px; }
+    .price-card { width: 100%; }
+    .email-form input[type="email"] { width: 100%; }
+    .email-form { flex-direction: column; }
+    .email-form button { width: 100%; }
+  }
+</style>
